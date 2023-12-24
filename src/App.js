@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import MenuBar from "./MenuBar";
+import MusicMode from "./MusikMode";
+import StyleMode from "./StyleMode";
+import PrivateMode from "./PrivateMode";
+import React from "react";
+import StateMode from "./StateMode";
 function App() {
+
+    let destination ;
+    switch (window.location.pathname){
+        case "/Music": destination = <MusicMode/>
+            break
+        case "/Style": destination = <StyleMode/>
+            break
+        case "/Privacy": destination = <PrivateMode/>
+            break
+        case "/State": destination = <StateMode/>
+            break
+    }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <MenuBar/>
+        {destination}
     </div>
   );
 }
-
 export default App;
