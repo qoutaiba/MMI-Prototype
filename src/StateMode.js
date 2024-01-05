@@ -1,23 +1,71 @@
-import React, {useState} from 'react';
-const App = () => {
+import React, { useState } from 'react';
+import './StateMode.css'; // Import CSS file for styling
 
-    const [selectedOption, setSelectedOption] = useState('');
+const StatusComponent = () => {
+    const [emojis, setEmojis] = useState(['😊','😁','😖','😡','😳','😴']); // Sample emojis
+    const [currentEmojiIndex, setCurrentEmojiIndex] = useState(0);
+    const [status, setStatus] = useState('');
+    const [showText, setShowText] = useState(false);
 
-    const handleSelectChange = (event) => {
-        setSelectedOption(event.target.value);
+    const handleStatusChange = (e) => {
+        setStatus(e.target.value);
+    };
+
+    const handlePrevious = () => {
+        const newIndex = (currentEmojiIndex - 1 + emojis.length) % emojis.length;
+        setCurrentEmojiIndex(newIndex);
+    };
+
+    const handleNext = () => {
+        const newIndex = (currentEmojiIndex + 1) % emojis.length;
+        setCurrentEmojiIndex(newIndex);
+    };
+
+    const handleCheck = () => {
+        setShowText(true);
+    };
+
+    const handleCancel = () => {
+        console.log('Cancel clicked');
     };
 
     return (
-        <>
-        <label htmlFor="dropdown">Select an option:</label>
-        <select id="dropdown" value={selectedOption} onChange={handleSelectChange}>
-            <option value="">Select...</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-        </select>
-        {selectedOption && <p>Your state is: {selectedOption}</p>}
-        </>
+        <div className="status-container">
+            <div className="emoji-text-container">
+                <div className="emoji-window">{emojis[currentEmojiIndex]}</div>
+                {showText && <p className="entered-text">{status}</p>}
+            </div>
+            {!showText && (
+                <div className="arrow-buttons">
+                    <button className="arrow-button" onClick={handlePrevious}>
+                        {'<'}
+                    </button>
+                    <button className="arrow-button" onClick={handleNext}>
+                        {'>'}
+                    </button>
+                </div>
+            )}
+            {!showText && (
+                <div className="text-input">
+                    <input
+                        className="status-input"
+                        type="text"
+                        placeholder="Enter status"
+                        value={status}
+                        onChange={handleStatusChange}
+                    />
+                    <div className="action-buttons">
+                        <button className="check-button" onClick={handleCheck}>
+                            ✓
+                        </button>
+                        <button className="cancel-button" onClick={handleCancel}>
+                            ✕
+                        </button>
+                    </div>
+                </div>
+            )}
+        </div>
     );
 };
-export default App;
+
+export default StatusComponent;
