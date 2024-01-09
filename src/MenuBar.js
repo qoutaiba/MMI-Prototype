@@ -15,6 +15,9 @@ const App = () => {
                <li>
                    <a href="State"> State mode</a>
                </li>
+               <li>
+                   <a href="Mystery"> Mystery mode</a>
+               </li>
            </ul>
        </nav>
     );

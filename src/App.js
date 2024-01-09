@@ -4,6 +4,8 @@ import StyleMode from "./StyleMode";
 import PrivateMode from "./PrivateMode";
 import React from "react";
 import StateMode from "./StateMode";
+import MysteryMode from "./MysteryMode"
+
 function App() {
 
     let destination ;
@@ -15,6 +17,8 @@ function App() {
         case "/Privacy": destination = <PrivateMode/>
             break
         case "/State": destination = <StateMode/>
+            break
+        case "/Mystery": destination = <MysteryMode/>
             break
     }
   return (
