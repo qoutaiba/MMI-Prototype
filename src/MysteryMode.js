@@ -19,7 +19,6 @@ const MysteryMode = () => {
 
     
     const handleChannel = (name) => {
-        console.log("WE ARE HERE")
         setCurrentChannel(name)
         setChannelState("listening")
     }
@@ -30,12 +29,17 @@ const MysteryMode = () => {
         }
     }
 
+    const handleHelp = () => {
+        //nur zum testen
+        setChannelState("hosting")
+    }
+
     const Channel = ({name}) => {
         return(
             <>
                 <div className="channel-container">
-                    <a onClick={() => handleChannel(name)}>{name}</a>
-                    <div>BILD</div>
+                    <div>{name}</div>
+                    <a onClick={() => handleChannel(name)}>➡️</a>
                 </div>
     
             </>
@@ -51,7 +55,7 @@ const MysteryMode = () => {
                         <div className="hero">
                             <div className="mystery-header">
                                 <a onClick={() => handleBack()}>Back</a>
-                                <a>Help</a>
+                                <a onClick={() => handleHelp()}>Help</a>
                             </div>
                             <div className="mystery-hero">
                                 Mystery Music Share
@@ -90,8 +94,9 @@ const MysteryMode = () => {
                                             <h3>People listening in: </h3>
                                             <h3 id="listenerNumber">{listeners}</h3>
                                         </div>
-                                        
-                                        
+                                        <div>Teilen ↪️</div>
+
+                       
                                     </>
                                 )
                             }

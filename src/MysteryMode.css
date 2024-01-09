@@ -59,7 +59,7 @@ a {
 }
 
 .lobby-list {
-    border-radius: 5px; 
+    
 }
 
 .channel-container {
@@ -67,6 +67,7 @@ a {
     align-items: center;
     justify-content: space-between; 
     flex-direction: row;
+    padding-bottom: 10px;
 }
 
 .listening-in-container {
