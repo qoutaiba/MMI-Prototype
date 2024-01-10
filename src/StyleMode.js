@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Visualizer from "./Visualizer";
 
 const StyleMode = () => {
     const [selectedOption, setSelectedOption] = useState('');
@@ -19,6 +20,7 @@ const StyleMode = () => {
             {selectedOption && (
                 <p>You selected: {selectedOption}</p>
             )}
+            <Visualizer/>
         </div>
     );
 };
