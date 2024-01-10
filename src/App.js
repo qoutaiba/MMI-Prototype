@@ -9,6 +9,7 @@ import StateMode from './StateMode';
 
 function App() {
     const [privateMode, setPrivateMode] = useState(false);
+    const [color, setColor] = useState('transparent'); // Default color: transparent
 
     let destination;
     switch (window.location.pathname) {
@@ -33,6 +34,29 @@ function App() {
         setPrivateMode(!privateMode);
     };
 
+    const handleColorChange = (event) => {
+        const value = event.target.value;
+        let newColor;
+        switch (value) {
+            case '0':
+                newColor = 'transparent'; // Off
+                break;
+            case '1':
+                newColor = '#00ff00'; // Green
+                break;
+            case '2':
+                newColor = '#0000ff'; // Blue
+                break;
+            case '3':
+                newColor = '#ff0000'; // Red
+                break;
+            default:
+                newColor = 'transparent'; // Off by default
+                break;
+        }
+        setColor(newColor);
+    };
+
     return (
         <div className="App">
             <MenuBar />
@@ -47,6 +71,17 @@ function App() {
                 </span>
             </div>
             <span className="toggle-label"></span>
+            <div className="color-slider">
+                <div className="color-indicator" style={{ borderColor: color }}></div>
+                <input
+                    type="range"
+                    min="0"
+                    max="3"
+                    step="1"
+                    value={color === 'transparent' ? '0' : color === '#00ff00' ? '1' : color === '#0000ff' ? '2' : '3'}
+                    onChange={handleColorChange}
+                />
+            </div>
             {destination}
         </div>
     );
