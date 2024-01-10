@@ -1,33 +1,111 @@
+body {
+    margin: 0; /* Reset default margin */
+}
+
 .navbar {
+    background: linear-gradient(to right,#8B023B, #1a237e);
+    padding: 0;
+    border-top: 1px solid #ccc;
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    background-color: #333;
-    padding: 10px 0;
+    z-index: 1000;
 }
 
 .navbar ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
 .navbar li {
-    margin: 0;
-}
-
-.nav-btn {
-    background-color: #fff;
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+    flex-grow: 1;
     text-align: center;
+    cursor: pointer;
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+    color: #ffffff; /* White text */
 }
 
-/* Adjust button styles as needed */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 0; /* Add padding for spacing */
+}
+
+.nav-item span {
+    font-size: 14px;
+    color: #ffffff; /* White text */
+}
+
+.icon-container {
+    display: flex;
+    gap: 5px;
+}
+/* Additional styles for the toggle switch */
+/* Additional styles for the flip switch */
+/* Additional styles for the improved flip switch */
+/* Additional styles for the improved flip switch */
+/* Additional styles for the improved flip switch */
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.flip-switch {
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    background-color: #ccc;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 20px;
+    width: 40px;
+    position: relative;
+}
+
+.track {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+}
+
+.knob {
+    height: 100%;
+    width: 50%;
+    background-color: #ccc;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.switch.active .knob {
+    transform: translateX(100%);
+}
+
+.icon {
+    margin-left: 10px;
+}
+
+.toggle-label {
+    margin-left: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
