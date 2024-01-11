@@ -6,6 +6,7 @@ import MusicMode from './MusikMode';
 import StyleMode from './StyleMode';
 import PrivateMode from './PrivateMode';
 import StateMode from './StateMode';
+import MysteryMode from './MysteryMode';
 
 function App() {
     const [privateMode, setPrivateMode] = useState(false);
@@ -25,9 +26,14 @@ function App() {
         case '/State':
             destination = <StateMode />;
             break;
+        case '/Mystery':
+            destination = <MysteryMode/>;
+            break;
+
         default:
             destination = null;
             break;
+
     }
 
     const togglePrivateMode = () => {

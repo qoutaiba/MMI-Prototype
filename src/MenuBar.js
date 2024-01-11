@@ -30,7 +30,7 @@ const App = () => {
                     </div>
                     <span>Style</span>
                 </li>
-                <li onClick={() => handleNavigation('/Music')}>
+                <li onClick={() => handleNavigation('/Mystery')}>
                     <div className="nav-item">
                         <div className="icon-container">
                             <FontAwesomeIcon icon={faMusic} size="2x" />
@@ -47,6 +47,7 @@ const App = () => {
                 </li>
             </ul>
         </nav>
+
     );
 };
 
