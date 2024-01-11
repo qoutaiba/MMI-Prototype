@@ -50,8 +50,8 @@ const MysteryMode = () => {
     return (
         <>
             <div className="mystery-container">
-                <div className="handy-container">
-                    <div className="content">
+                <div className="">
+                    <div className="mystery-page">
                         <div className="hero">
                             <div className="mystery-header">
                                 <a onClick={() => handleBack()}>Back</a>
@@ -62,7 +62,7 @@ const MysteryMode = () => {
                             </div>
                         </div>
 
-                        <div className="lobby">
+                        <div className="content">
                             
                             {channelState === "none" && (
                                     <>
