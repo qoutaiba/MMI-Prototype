@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import MenuBar from './MenuBar';
-import MusicMode from './MusikMode';
-import StyleMode from './StyleMode';
-import PrivateMode from './PrivateMode';
-import StateMode from './StateMode';
+import MenuBar from "./MenuBar";
+import MusicMode from "./MusikMode";
+import StyleMode from "./StyleMode";
+import PrivateMode from "./PrivateMode";
+import React, {useRef, useState} from "react";
+import StateMode from "./StateMode";
 import MysteryMode from './MysteryMode';
-import DisplayPage from './DisplayPage';
+import sound from "./Musik/land.wav" ;
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";import DisplayPage from './DisplayPage';
 import axios from 'axios';
 
 function App() {
     const [privateMode, setPrivateMode] = useState(false);
     const [color, setColor] = useState('transparent'); // Default color: transparent
+    const audioRef = useRef(null);
 
+    const playAudio = () => {
+        audioRef.current.play();
+    };
     let destination;
     switch (window.location.pathname) {
         case '/Music':
@@ -95,6 +99,8 @@ function App() {
                     onChange={handleColorChange}
                 />
             </div>
+            <audio ref={audioRef} src= {sound}/>
+            <button onClick={playAudio}>Click me </button>
             {destination}
         </div>
     );
