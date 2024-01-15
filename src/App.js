@@ -7,36 +7,37 @@ import StyleMode from './StyleMode';
 import PrivateMode from './PrivateMode';
 import StateMode from './StateMode';
 import MysteryMode from './MysteryMode';
-import DisplayPage from './DisplayPage'; // Add this line
+import DisplayPage from './DisplayPage';
+import axios from 'axios';
 
 function App() {
-   const [privateMode, setPrivateMode] = useState(false);
-   const [color, setColor] = useState('transparent'); // Default color: transparent
+    const [privateMode, setPrivateMode] = useState(false);
+    const [color, setColor] = useState('transparent'); // Default color: transparent
 
-   let destination;
-   switch (window.location.pathname) {
-       case '/Music':
-           destination = <MusicMode />;
-           break;
-       case '/Style':
-           destination = <StyleMode />;
-           break;
-       case '/Privacy':
-           destination = <PrivateMode />;
-           break;
-       case '/State':
-           destination = <StateMode />;
-           break;
-       case '/Mystery':
-           destination = <MysteryMode/>;
-           break;
-       case '/Display':
-           destination = <DisplayPage />; 
-           break;
-       default:
-           destination = null;
-           break;
-   }
+    let destination;
+    switch (window.location.pathname) {
+        case '/Music':
+            destination = <MusicMode />;
+            break;
+        case '/Style':
+            destination = <StyleMode />;
+            break;
+        case '/Privacy':
+            destination = <PrivateMode />;
+            break;
+        case '/State':
+            destination = <StateMode />;
+            break;
+        case '/Mystery':
+            destination = <MysteryMode />;
+            break;
+        case '/Display':
+            destination = <DisplayPage />;
+            break;
+        default:
+            destination = null;
+            break;
+    }
 
     const togglePrivateMode = () => {
         setPrivateMode(!privateMode);
@@ -63,6 +64,10 @@ function App() {
                 break;
         }
         setColor(newColor);
+        axios.post('http://localhost:5000/api/color', { color: newColor }) // saves the current choosen ring color to the DB
+            .catch((error) => {
+                console.error(error);
+            });
     };
 
     return (

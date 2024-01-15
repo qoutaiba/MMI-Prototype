@@ -7,12 +7,10 @@ const StatusComponent = () => {
     const [currentEmojiIndex, setCurrentEmojiIndex] = useState(0);
     const [status, setStatus] = useState('');
     const [showText, setShowText] = useState(false);
-
-
     
     const handleSubmit = async (emoji, status) => { // POST to api/state to send emoji and status to DB
         try {
-            const response = await axios.post('http://localhost:5000/api/state', JSON.stringify({ emoji, status }), {  // .env support still missing, will be added later -> for now add the fixed URL while developing 
+            const response = await axios.post('http://localhost:5000/api/state', JSON.stringify({ emoji, status }), {  
                 headers: {
                     'Content-Type': 'application/json'
                 }

@@ -1,0 +1,44 @@
+/* DisplayPage.css */
+
+/* Styles for the ring */
+.ring-green {
+    border: 10px solid #00ff00; /* Green */
+    padding: 20px;
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+ }
+ 
+ .ring-blue {
+    border: 10px solid #0000ff; /* Blue */
+    padding: 20px;
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+ }
+ 
+ .ring-red {
+    border: 10px solid #ff0000; /* Red */
+    padding: 20px;
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+ }
+ 
+ /* Styles for the statuses */
+ .status {
+    text-align: center;
+    margin: 10px;
+ }
+ 
+ .status h2 {
+    font-size: 2em;
+ }
+ 
+ .status p {
+    font-size: 1.2em;
+ }
+ 
