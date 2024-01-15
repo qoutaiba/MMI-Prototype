@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
 import './StateMode.css'; // Import CSS file for styling
+import axios from 'axios';
 
 const StatusComponent = () => {
-    const [emojis, setEmojis] = useState(['😊','😁','😖','😡','😳','😴']); // Sample emojis
+    const [emojis, setEmojis] = useState(['😊', '😁', '😖', '😡', '😳', '😴']); // Sample emojis
     const [currentEmojiIndex, setCurrentEmojiIndex] = useState(0);
     const [status, setStatus] = useState('');
     const [showText, setShowText] = useState(false);
+    
+    const handleSubmit = async (emoji, status) => { // POST to api/state to send emoji and status to DB
+        try {
+            const response = await axios.post('http://localhost:5000/api/state', JSON.stringify({ emoji, status }), {  
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const handleStatusChange = (e) => {
         setStatus(e.target.value);
@@ -23,7 +37,9 @@ const StatusComponent = () => {
 
     const handleCheck = () => {
         setShowText(true);
+        handleSubmit(emojis[currentEmojiIndex], status);
     };
+
 
     const handleCancel = () => {
         console.log('Cancel clicked');
