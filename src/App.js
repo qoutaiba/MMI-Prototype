@@ -4,6 +4,7 @@ import StyleMode from "./StyleMode";
 import PrivateMode from "./PrivateMode";
 import React, {useRef, useState} from "react";
 import StateMode from "./StateMode";
+import MysteryMode from './MysteryMode';
 import sound from "./Musik/land.wav" ;
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
@@ -29,6 +30,10 @@ function App() {
         case '/State':
             destination = <StateMode />;
             break;
+        case '/Mystery':
+            destination = <MysteryMode/>;
+            break;
+
         default:
             destination = null;
             break;

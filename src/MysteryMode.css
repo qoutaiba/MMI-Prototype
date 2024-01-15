@@ -1,0 +1,74 @@
+a {
+    cursor: pointer;
+}
+
+
+.mystery-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 20px 0;
+}
+
+
+.mystery-page {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 2 2;
+    height:100%;
+    width: 100vw;
+    padding: 15px 3rem;
+    padding-top: 60px;
+    padding-bottom: 80px;
+
+    word-wrap: break-word;
+}
+
+.hero {
+    box-sizing: border-box;
+}
+
+
+.mystery-header {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mystery-hero {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.content {
+    padding: 0 10px;
+    
+}
+
+.lobby-list {
+    
+}
+
+.channel-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+
+.listening-in-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+#listenerNumber {
+    color: red;
+}
