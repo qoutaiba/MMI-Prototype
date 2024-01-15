@@ -29,7 +29,7 @@ const MysteryMode = () => {
         }
     }
 
-    const handleHelp = () => {
+    const handleCreate = () => {
         //nur zum testen
         setChannelState("hosting")
     }
@@ -55,7 +55,7 @@ const MysteryMode = () => {
                         <div className="hero">
                             <div className="mystery-header">
                                 <a onClick={() => handleBack()}>Back</a>
-                                <a onClick={() => handleHelp()}>Help</a>
+                                <a>Help</a>
                             </div>
                             <div className="mystery-hero">
                                 Mystery Music Share
@@ -66,7 +66,10 @@ const MysteryMode = () => {
                             
                             {channelState === "none" && (
                                     <>
-                                        <h3>Channels in your radius:</h3>
+                                        <div className='listening-in-container'>
+                                            <h3>Channels in your radius:</h3>
+                                            <a onClick={() => handleCreate()}>➕</a>
+                                        </div>
                                         <div className="lobby-list">
                                             {
                                                 channels.map(

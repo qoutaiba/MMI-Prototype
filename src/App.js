@@ -8,6 +8,8 @@ import PrivateMode from './PrivateMode';
 import StateMode from './StateMode';
 import MysteryMode from './MysteryMode';
 
+import "./central_styles.css";
+
 function App() {
     const [privateMode, setPrivateMode] = useState(false);
     const [color, setColor] = useState('transparent'); // Default color: transparent

@@ -52,14 +52,14 @@ a {
 
 .lobby-list {
     
+    padding-right: 30px;
 }
 
 .channel-container {
     display: flex;
     align-items: center;
     justify-content: space-between; 
-    flex-direction: row;
-    padding-bottom: 10px;
+    padding: 10px 0;
 }
 
 .listening-in-container {
@@ -71,4 +71,4 @@ a {
 
 #listenerNumber {
     color: red;
-}
+}   
