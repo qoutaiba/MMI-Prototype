@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPalette, faMusic, faUserSecret, faChartBar, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faPalette, faMusic, faQuestion, faComment, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css'; // Import your CSS file
 
@@ -20,7 +20,10 @@ const App = () => {
                 </li>
                 <li onClick={() => handleNavigation('/State')}>
                     <div className="nav-item">
-                        <FontAwesomeIcon icon={faChartBar} size="2x" />
+                        <div className="icon-container">
+                            {/*<FontAwesomeIcon icon={faSmile} size="2x" style={{ marginRight: '8px' }} />*/}
+                            <FontAwesomeIcon icon={faComment} size="2x" />
+                        </div>
                     </div>
                     <span>Status</span>
                 </li>
@@ -28,7 +31,7 @@ const App = () => {
                     <div className="nav-item">
                         <FontAwesomeIcon icon={faPalette} size="2x" />
                     </div>
-                    <span>Style</span>
+                    <span>Style </span>
                 </li>
                 <li onClick={() => handleNavigation('/Mystery')}>
                     <div className="nav-item">
@@ -37,11 +40,11 @@ const App = () => {
                             <FontAwesomeIcon icon={faQuestion} size="2x" className="question-mark" />
                         </div>
                     </div>
-                    <span>MystShare</span>
+                    <span>Mystery </span>
                 </li>
-                <li onClick={() => handleNavigation('/Privacy')}>
+                <li /*onClick={() => handleNavigation('/Privacy')}*/>
                     <div className="nav-item">
-                        <FontAwesomeIcon icon={faUserSecret} size="2x" />
+                        {<FontAwesomeIcon icon={faMinusCircle} color="white" size="2x" />}
                     </div>
                     <span>DND</span>
                 </li>
