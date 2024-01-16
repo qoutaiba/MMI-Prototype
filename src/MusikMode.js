@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './MusikMode.css'; //
+import './MusikMode.css';
 
 const DropdownMenu = () => {
     const options = [
         { value: '', label: 'Mode', content: '' },
-        { value: 'Show Artist and Song', label: 'Show Artist and Song', content: 'Song Name' },
-        { value: 'Show music genres', label: 'Show music genres', content: ['Power Metal', 'Metal', 'Progressive Metal'] },
+        { value: 'Show Artist and Song', label: 'Show Song and Artist', content: ['Retro Music', 'Various Artists'] },
+        { value: 'Show music genres', label: 'Show music genres', content: ['8-Bit', 'Retro', 'Video Game'] },
         { value: 'Show lyrics', label: 'Show lyrics', content: 'Lyrics...' },
     ];
 
@@ -29,17 +29,18 @@ const DropdownMenu = () => {
             </select>
 
             {selectedOptionInfo && (
-                <div>
+                <div className="container-with-circle">
+                    <div className="circle-around-boxes"></div>
                     {typeof selectedOptionInfo.content === 'string' ? (
                         <div>
                             <p className="song-name">{selectedOptionInfo.content}</p>
                         </div>
                     ) : (
                         <div>
-                            {selectedOptionInfo.content.map((buttonText, index) => (
-                                <button key={index} onClick={() => console.log(buttonText)}>
-                                    {buttonText}
-                                </button>
+                            {selectedOptionInfo.content.map((text, index) => (
+                                <div key={index} className="non-clickable-box">
+                                    <span className={index === 0 ? 'larger-text' : 'normal-text'}>{text}</span>
+                                </div>
                             ))}
                         </div>
                     )}
