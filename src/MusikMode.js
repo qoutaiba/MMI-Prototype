@@ -3,10 +3,10 @@ import './MusikMode.css'; //
 
 const DropdownMenu = () => {
     const options = [
-        { value: '', label: '-- Select --', content: '' },
-        { value: 'Show Artist and Song', label: 'Show Artist and Song', content: 'Song Name \n Artist' },
+        { value: '', label: 'Mode', content: '' },
+        { value: 'Show Artist and Song', label: 'Show Artist and Song', content: 'Song Name' },
         { value: 'Show music genres', label: 'Show music genres', content: ['Power Metal', 'Metal', 'Progressive Metal'] },
-        { value: 'Show lyrics', label: 'Show lyrics', content: 'Hier koennte ihr Text stehen!' },
+        { value: 'Show lyrics', label: 'Show lyrics', content: 'Lyrics...' },
     ];
 
     const [selectedOption, setSelectedOption] = useState('');
@@ -18,8 +18,8 @@ const DropdownMenu = () => {
     const selectedOptionInfo = options.find((option) => option.value === selectedOption);
 
     return (
-        <div className="center-container"> {}
-            <label htmlFor="dropdown">Select an option:</label>
+        <div className="center-container">
+            <label htmlFor="dropdown">Select what to display!:</label>
             <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -32,7 +32,7 @@ const DropdownMenu = () => {
                 <div>
                     {typeof selectedOptionInfo.content === 'string' ? (
                         <div>
-                            <p>{selectedOptionInfo.content}</p>
+                            <p className="song-name">{selectedOptionInfo.content}</p>
                         </div>
                     ) : (
                         <div>
