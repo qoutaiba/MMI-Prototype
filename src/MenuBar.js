@@ -5,6 +5,7 @@ import { faPalette, faMusic, faQuestion, faComment, faMinusCircle } from '@forta
 import './App.css'; // Import your CSS file
 
 const App = () => {
+    const currentPath = window.location.pathname;
     const handleNavigation = (route) => {
         window.location.href = route;
     };
@@ -12,13 +13,13 @@ const App = () => {
     return (
         <nav className="navbar">
             <ul>
-                <li onClick={() => handleNavigation('/Music')}>
+                <li className={currentPath === '/Music' ? 'selected' : ''} onClick={() => handleNavigation('/Music')}>
                     <div className="nav-item">
                         <FontAwesomeIcon icon={faMusic} size="2x" />
                     </div>
                     <span>Music</span>
                 </li>
-                <li onClick={() => handleNavigation('/State')}>
+                <li className={currentPath === '/State' ? 'selected' : ''} onClick={() => handleNavigation('/State')}>
                     <div className="nav-item">
                         <div className="icon-container">
                             {/*<FontAwesomeIcon icon={faSmile} size="2x" style={{ marginRight: '8px' }} />*/}
@@ -27,13 +28,13 @@ const App = () => {
                     </div>
                     <span>Status</span>
                 </li>
-                <li onClick={() => handleNavigation('/Style')}>
+                <li className={currentPath === '/Style' ? 'selected' : ''} onClick={() => handleNavigation('/Style')}>
                     <div className="nav-item">
                         <FontAwesomeIcon icon={faPalette} size="2x" />
                     </div>
                     <span>Style </span>
                 </li>
-                <li onClick={() => handleNavigation('/Mystery')}>
+                <li className={currentPath === '/Mystery' ? 'selected' : ''} onClick={() => handleNavigation('/Mystery')}>
                     <div className="nav-item">
                         <div className="icon-container">
                             <FontAwesomeIcon icon={faMusic} size="2x" />

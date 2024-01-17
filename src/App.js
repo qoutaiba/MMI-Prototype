@@ -79,14 +79,15 @@ function App() {
         <div className="App">
             <MenuBar />
             <div className="flip-switch">
+                <span className="icon">
+                    <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye} />
+                </span>
                 <div className={`switch ${privateMode ? 'active' : ''}`} onClick={togglePrivateMode}>
                     <div className="track">
                         <div className="knob" />
                     </div>
                 </div>
-                <span className="icon">
-                    <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye} />
-                </span>
+
             </div>
             <span className="toggle-label"></span>
             <div className="color-slider">
