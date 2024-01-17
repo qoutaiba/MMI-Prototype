@@ -11,6 +11,8 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import DisplayPage from './DisplayPage';
 import axios from 'axios';
 
+import "./central_styles.css";
+
 function App() {
     const [privateMode, setPrivateMode] = useState(false);
     const [color, setColor] = useState('transparent'); // Default color: transparent
