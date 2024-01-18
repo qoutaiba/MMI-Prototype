@@ -10,7 +10,7 @@ const StatusComponent = () => {
     
     const handleSubmit = async (emoji, status) => { // POST to api/state to send emoji and status to DB
         try {
-            const response = await axios.post('http://localhost:5000/api/state', JSON.stringify({ emoji, status }), {  
+            const response = await axios.post('/api/state', JSON.stringify({ emoji, status }), {
                 headers: {
                     'Content-Type': 'application/json'
                 }
