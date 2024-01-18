@@ -144,10 +144,3 @@ a, button{
     flex-direction: column;
 }
 
-#naming-ok {
-    border-color: #00d26a;
-}
-
-#naming-cancel {
-    border-color: #f92f60;
-}

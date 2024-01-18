@@ -47,20 +47,28 @@ const StatusComponent = () => {
 
     return (
         <div className="status-container">
-            <div className="emoji-text-container">
+            <div className={`emoji-text-container ${showText ? "emoji-text-column" : "emoji-text-row"}`}>
+                {!showText && (
+                    <div className="arrow-buttons">
+                        <button className="arrow-button" onClick={handlePrevious}>
+                            {'⬅'}
+                        </button>
+                        
+                    </div>
+                )}
+                
                 <div className="emoji-window">{emojis[currentEmojiIndex]}</div>
                 {showText && <p className="entered-text">{status}</p>}
-            </div>
-            {!showText && (
+                {!showText && (
                 <div className="arrow-buttons">
-                    <button className="arrow-button" onClick={handlePrevious}>
-                        {'<'}
-                    </button>
+                    
                     <button className="arrow-button" onClick={handleNext}>
-                        {'>'}
+                        {'➡'}
                     </button>
                 </div>
             )}
+            </div>
+            
             {!showText && (
                 <div className="text-input">
                     <input
@@ -71,11 +79,11 @@ const StatusComponent = () => {
                         onChange={handleStatusChange}
                     />
                     <div className="action-buttons">
-                        <button className="check-button" onClick={handleCheck}>
-                            ✓
+                        <button className="check-button positive-border" onClick={handleCheck}>
+                            ✅
                         </button>
-                        <button className="cancel-button" onClick={handleCancel}>
-                            ✕
+                        <button className="cancel-button negative-border" onClick={handleCancel}>
+                            ❌
                         </button>
                     </div>
                 </div>
