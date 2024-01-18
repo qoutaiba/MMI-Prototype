@@ -71,7 +71,7 @@ function App() {
                 break;
         }
         setColor(newColor);
-        axios.post('http://localhost:5000/api/color', { color: newColor }) // saves the current choosen ring color to the DB
+        axios.post('/api/color', { color: newColor }) // saves the current choosen ring color to the DB
             .catch((error) => {
                 console.error(error);
             });
