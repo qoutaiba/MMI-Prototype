@@ -18,7 +18,7 @@ a, button{
     grid-template-rows: 2 2;
     height:100%;
     width: 100vw;
-    padding: 15px 3rem;
+    padding: 10px 2rem;
     padding-top: 60px;
     padding-bottom: 80px;
 
@@ -43,6 +43,7 @@ a, button{
 
 .mystery-hero {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: x-large;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +51,6 @@ a, button{
 }
 
 .content {
-    
 }
 
 .lobby-list {
@@ -88,12 +88,17 @@ a, button{
     color: red;
 }   
 
+#sharing {
+    padding: 5px 10px;
+}
+
 
 .popup-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 3;
+    box-sizing: border-box;
+    height: 55%;
+    width: 85%;
 
     position: fixed;
     top: 50%;
@@ -101,23 +106,48 @@ a, button{
     transform: translate(-50%, -50%);
     background-color: white;
     border: 3px solid black;
+
+    padding: 20px 15px;
 }
 
 
-.help-container {
-    height: 60%;
-    width: 80%;
 
-    padding: 10px 15px; 
-}
-
-.help-container p {
+.flex-center {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
 }
 
 .naming-container {
-    height: 60%;
-    width: 80%;
-    padding: 10px 15px;
 }
 
 
+#naming-input {
+    padding: 5px 10px;
+}
+
+
+.popup-container button {
+    width: 100px;
+    padding: 10px 0px; 
+}
+
+
+#naming-action-buttons {
+    justify-content: space-evenly;
+}
+
+
+
+.title-box div{
+    display: flex;
+    flex-direction: column;
+}
+
+#naming-ok {
+    border-color: #00d26a;
+}
+
+#naming-cancel {
+    border-color: #f92f60;
+}
