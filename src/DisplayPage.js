@@ -8,7 +8,7 @@ const DisplayPage = () => {
 
  useEffect(() => {
 
-    axios.get('http://localhost:5000/api/color')
+    axios.get('/api/color')
         .then((response) => {
             console.log('Fetched color: ', response.data.color); // Log the fetched color
             setBorderColor(response.data.color);
@@ -17,7 +17,7 @@ const DisplayPage = () => {
             console.error(error);
         });
 
-    axios.get('http://localhost:5000/api/state')
+    axios.get('/api/state')
         .then((response) => {
             setStatuses(response.data);
         })
