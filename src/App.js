@@ -11,6 +11,9 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import DisplayPage from './DisplayPage';
 import axios from 'axios';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
 import "./central_styles.css";
 
 function App() {
@@ -78,6 +81,8 @@ function App() {
     };
 
     return (
+        <Router>
+
         <div className="App">
             <MenuBar />
             <div className="flip-switch">
@@ -105,8 +110,15 @@ function App() {
             </div>
             <audio ref={audioRef} src={sound} />
             <button onClick={playAudio}>Click me </button>
-            {destination}
+            {/**destination**/}
+                <Routes>
+                    <Route path="/Mystery" element={<MysteryMode/>}></Route>
+                    <Route path="/" element={<MysteryMode/>}></Route>
+                </Routes>
+
         </div>
+        </Router>
+
     );
 }
 
