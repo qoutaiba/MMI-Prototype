@@ -41,6 +41,11 @@ const DisplayPage = () => {
             .catch((error) => {
                 console.error(error);
             });
+
+        const interval = setInterval(() => {
+            window.location.reload();
+        }, 10000); // 10 seconds
+        return () => clearInterval(interval);
     }, []);
 
     return (
