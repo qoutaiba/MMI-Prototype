@@ -1,4 +1,4 @@
-a {
+a, button{
     cursor: pointer;
 }
 
@@ -18,7 +18,7 @@ a {
     grid-template-rows: 2 2;
     height:100%;
     width: 100vw;
-    padding: 15px 3rem;
+    padding: 10px 2rem;
     padding-top: 60px;
     padding-bottom: 80px;
 
@@ -37,8 +37,13 @@ a {
     justify-content: space-between;
 }
 
+.mystery-header a {
+    padding: 5px 10px;
+}
+
 .mystery-hero {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: x-large;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,20 +51,20 @@ a {
 }
 
 .content {
-    padding: 0 10px;
-    
 }
 
 .lobby-list {
     
+    padding-right: 30px;
 }
 
 .channel-container {
     display: flex;
     align-items: center;
     justify-content: space-between; 
-    flex-direction: row;
-    padding-bottom: 10px;
+    margin: 5px 0;
+    padding: 10px;
+    
 }
 
 .listening-in-container {
@@ -69,6 +74,80 @@ a {
     gap: 10px;
 }
 
+.main-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-container button {
+    padding: 10px 15px;
+}
+
 #listenerNumber {
     color: red;
+}   
+
+#sharing {
+    padding: 5px 10px;
+}
+
+
+.popup-container {
+    display: grid;
+    grid-template-rows: 3;
+    box-sizing: border-box;
+    height: 55%;
+    width: 85%;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 3px solid black;
+
+    padding: 20px 15px;
+}
+
+
+
+.flex-center {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.naming-container {
+}
+
+
+#naming-input {
+    padding: 5px 10px;
+}
+
+
+.popup-container button {
+    width: 100px;
+    padding: 10px 0px; 
+}
+
+
+#naming-action-buttons {
+    justify-content: space-evenly;
+}
+
+
+
+.title-box div{
+    display: flex;
+    flex-direction: column;
+}
+
+#naming-ok {
+    border-color: #00d26a;
+}
+
+#naming-cancel {
+    border-color: #f92f60;
 }
