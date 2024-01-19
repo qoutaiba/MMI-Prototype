@@ -52,6 +52,12 @@ body {
 /* Additional styles for the improved flip switch */
 /* Additional styles for the improved flip switch */
 /* Additional styles for the improved flip switch */
+
+.navbar svg, .navbar span {
+    color: white;
+}
+
+
 .App {
     display: flex;
     flex-direction: column;

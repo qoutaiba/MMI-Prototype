@@ -13,7 +13,6 @@ import axios from 'axios';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
 import "./central_styles.css";
 
 function App() {
@@ -24,31 +23,7 @@ function App() {
     const playAudio = () => {
         audioRef.current.play();
     };
-    let destination;
-    switch (window.location.pathname) {
-        case '/Music':
-            destination = <MusicMode />;
-            break;
-        case '/Style':
-            destination = <StyleMode />;
-            break;
-        case '/Privacy':
-            destination = <PrivateMode />;
-            break;
-        case '/State':
-            destination = <StateMode />;
-            break;
-        case '/Mystery':
-            destination = <MysteryMode />;
-            break;
-        case '/Display':
-            destination = <DisplayPage />;
-            break;
-        default:
-            destination = null;
-            break;
-    }
-
+    
     const togglePrivateMode = () => {
         setPrivateMode(!privateMode);
     };
@@ -110,10 +85,14 @@ function App() {
             </div>
             <audio ref={audioRef} src={sound} />
             <button onClick={playAudio}>Click me </button>
-            {/**destination**/}
                 <Routes>
-                    <Route path="/Mystery" element={<MysteryMode/>}></Route>
                     <Route path="/" element={<MysteryMode/>}></Route>
+                    <Route path="/Music" element={<MusicMode/>}></Route>
+                    <Route path="/State" element={<StateMode/>}></Route>
+                    <Route path="/Style" element={<StyleMode/>}></Route>
+                    <Route path="/Mystery" element={<MysteryMode/>}></Route>
+                    <Route path="/Privacy" element={<PrivateMode/>}></Route>
+                    <Route path="/Display" element={<DisplayPage/>}></Route>
                 </Routes>
 
         </div>

@@ -3,7 +3,7 @@
 }
 
 
-button, a {
+button, a:not(.navbar a) {
   
     background: #fff;
     border: 1.5px solid #242424; 
@@ -35,3 +35,4 @@ input[type=text] {
     border-color: #f92f60;
 
 }
+
