@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import DisplayPage from './DisplayPage';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 import "./central_styles.css";
 
@@ -17,6 +18,17 @@ function App() {
     const [privateMode, setPrivateMode] = useState(false);
     const [color, setColor] = useState('transparent'); // Default color: transparent
     const audioRef = useRef(null);
+
+    useEffect(() => {
+        const page = window.location.pathname.slice(1); // remove leading slash
+        if (page !== 'Display') {
+            axios.post('/api/currentPage', { page: page })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+      }, [window.location.pathname]);
+     
 
     const playAudio = () => {
         audioRef.current.play();
