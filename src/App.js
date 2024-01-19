@@ -7,7 +7,7 @@ import StateMode from "./StateMode";
 import MysteryMode from './MysteryMode';
 import sound from "./Musik/land.wav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {faEye, faEyeSlash, faHeadphones} from "@fortawesome/free-solid-svg-icons";
 import DisplayPage from './DisplayPage';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -71,6 +71,9 @@ function App() {
         <Router>
 
         <div className="App">
+            <button className="headphone-button">
+                <FontAwesomeIcon icon={faHeadphones} />
+            </button>
             <MenuBar />
             <div className="flip-switch">
                 <span className="icon">

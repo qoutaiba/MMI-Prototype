@@ -189,3 +189,13 @@ input[type='range']::-webkit-slider-thumb {
     box-shadow: 0 0 10px rgba(26, 35, 126, 0.8); /* Glow effect */
 }
 
+.headphone-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+}
