@@ -3,7 +3,7 @@
 }
 
 
-button, a {
+button, a:not(.navbar a) {
   
     background: #fff;
     border: 1.5px solid #242424; 
@@ -24,3 +24,15 @@ input[type=text] {
     border: 1px solid #ccc;
     font-size: 16px;
 }
+
+
+.positive-border {
+    border-color: #00d26a;
+
+}
+
+.negative-border {
+    border-color: #f92f60;
+
+}
+

@@ -92,7 +92,7 @@ const MysteryMode = () => {
                     </div>
                     
                     <div id="help-button" className="flex-center popup-third">
-                        <button onClick={() => setHelpOpen(false)}>
+                        <button className="positive-border" onClick={() => setHelpOpen(false)}>
                             Ok
                         </button>
                     </div>
@@ -144,10 +144,10 @@ const MysteryMode = () => {
                         onChange={handleInputChange}/>               
                     </div>
                     <div id="naming-action-buttons" className="flex-center popup-third">
-                        <button id="naming-ok" onClick={() => handleSubmit()}>
+                        <button className="positive-border" onClick={() => handleSubmit()}>
                             ✅Ok
                         </button>
-                        <button id="naming-cancel" onClick={() => handleCancel()}>
+                        <button className="negative-border" onClick={() => handleCancel()}>
                             ❌Cancel
                         </button>
 

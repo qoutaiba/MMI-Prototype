@@ -8,14 +8,13 @@
     background-color: #4caf50;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 5px 10px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 30px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 30px;
     transition-duration: 0.4s;
 }
 
@@ -47,15 +46,36 @@
 
 .emoji-text-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
+}
+
+.emoji-text-column {
+    flex-direction: column;
+}
+
+.emoji-text-row {
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .emoji-window {
     font-size: 4em;
     margin-bottom: 10px;
+    padding: 0px 20px;
 }
 
 .entered-text {
     font-size: 1.5em;
+}
+
+.action-buttons {
+    margin-top: 15px; 
+    width: 100%;
+    padding: 0 20px; 
+    display: flex; 
+    justify-content: space-evenly;
+}
+
+.action-buttons button {
+    padding: 5px 10px; 
 }
