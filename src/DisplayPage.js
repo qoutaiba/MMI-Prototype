@@ -45,28 +45,28 @@ const DisplayPage = () => {
 
     return (
         <div>
-            <div style={{ border: '10px solid', borderRadius: '50%', padding: '20px', width: '200px', height: '200px', borderColor: borderColor }}>         
-            {currentPage === 'State' && (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1em' }}>
-                    {statuses.map((status, index) => (
-                       <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                           <h2>{status.emoji}</h2>
-                           <p>{status.status}</p>
-                       </div>
-                    ))}
-                </div>
-            )}
-            {currentPage === 'Music' && (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1em', flexDirection: 'column' }}>
-                    {musicMode && (
-                       Array.isArray(musicMode) ? musicMode.map((item, i) => <p key={i}>{item}</p>) : <p>{musicMode}</p>
-                    )}
-                </div>
-            )}
-            {/* similar blocks for the other pages */}
+            <div style={{ border: '10px solid', borderRadius: '50%', padding: '20px', width: '200px', height: '200px', borderColor: borderColor }}>
+                {currentPage === 'State' && (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1em' }}>
+                        {statuses.map((status, index) => (
+                            <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <h2>{status.emoji}</h2>
+                                <p>{status.status}</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
+                {currentPage === 'Music' && (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1em', flexDirection: 'column' }}>
+                        {musicMode && (
+                            Array.isArray(musicMode) ? musicMode.map((item, i) => <p key={i}>{item}</p>) : <p>{musicMode}</p>
+                        )}
+                    </div>
+                )}
+                {/* similar blocks for the other pages */}
+            </div>
         </div>
-        </div>
-     );
-     
+    );
+
 }
 export default DisplayPage;
