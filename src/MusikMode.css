@@ -66,7 +66,7 @@ select {
 
 
 
-p {
+.container-with-circle p {
     font-size: 16px;
     margin-bottom: 15px;
 }

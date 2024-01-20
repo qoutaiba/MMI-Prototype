@@ -79,3 +79,9 @@
 .action-buttons button {
     padding: 5px 10px; 
 }
+
+#edit-state {
+    margin-top: 15px; 
+    padding: 5px 10px;
+    font-size: small;
+}

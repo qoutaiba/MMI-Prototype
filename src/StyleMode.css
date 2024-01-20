@@ -1,0 +1,22 @@
+.style-container {
+    width: 100vw; 
+}
+
+
+#style-gif {
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    max-height: 200px;
+}
+
+.gif-container {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.style-page {
+    padding: 50px 50px;
+}
