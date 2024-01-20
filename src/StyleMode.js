@@ -1,26 +1,54 @@
 import React, {useState} from 'react';
-import Visualizer from "./Visualizer";
+
+import './StyleMode.css'; 
 
 const StyleMode = () => {
     const [selectedOption, setSelectedOption] = useState('');
+
+    const options = ["Sound Waves", "Option to be dev.", "In Dev..."]
+
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value);
     };
 
+    const handleVisualClick = () => {
+        const currentIndex = options.indexOf(selectedOption);
+        const nextIndex = (currentIndex + 1) % options.length;
+        setSelectedOption(options[nextIndex]);
+    }
 
     return (
-        <div>
-            <label>Select an option for the visuals:</label>
-            <select value={selectedOption} onChange={handleSelectChange}>
-                <option value="">Select...</option>
-                <option value="Visuals1">Variante 1</option>
-                <option value="Visuals2">Variante 2</option>
-                <option value="Visuals3">Variante 3</option>
-            </select>
-            {selectedOption && (
-                <p>You selected: {selectedOption}</p>
-            )}
-            <Visualizer/>
+        <div className="style-container">
+            <div className="style-page">
+
+                <label id="choose-visual">Choose your visual:</label>
+                <select id="select-visual" value={selectedOption} onChange={handleSelectChange}>
+                    <option value="-">-</option>
+                    
+                    {
+                        options.map((option) => (
+                            <option value={option}>{option}</option>
+                        ))
+                    }
+                </select>
+            
+                {
+                    selectedOption === "Sound Waves" ? (
+                    <div className="gif-container" onClick={() => handleVisualClick()}>
+                        <img src="sound_visual.webp" className="style-gif">
+
+                        </img>
+                    </div>
+                    ) : (
+                        <div className="gif-container" onClick={() => handleVisualClick()}>
+                            <img src="sound_visual.webp" className="style-gif hidden">
+
+                            </img>
+                        </div>
+                    )
+                }
+            </div>
+         
         </div>
     );
 };

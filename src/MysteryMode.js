@@ -85,9 +85,9 @@ const MysteryMode = () => {
                     </div>
                     <div className="popup-first flex-center">
                         <p id="">
-                            If you want to host your music to nearby devices you can click choose "Create a channel"
-                            If you want to join a channel hosted by other, "Join a channel".
-                            Maybe add an if condition based on current state of the app. show different information regarding each functionality, or just explain mystery music share in general? 
+                            If you want to host your music to nearby devices you can click "Create a channel".
+                            <br/>
+                            If you want to join a channel hosted by others, "Join a channel".
                         </p>
                     </div>
                     
@@ -168,7 +168,10 @@ const MysteryMode = () => {
                     <div className="mystery-page">
                         <div className="hero">
                             <div className="mystery-header">
-                                <a onClick={() => handleBack()}>⬅️ Back</a>
+                                
+                                <a className={channelState === main_state ? "hidden" : ""} onClick={() => handleBack()}>⬅️ Back</a>
+                                
+                                
                                 <a onClick={() => handleHelp()}>Help❓</a>
                             </div>
                             <div className="mystery-hero">

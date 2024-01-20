@@ -40,6 +40,10 @@ const StatusComponent = () => {
         handleSubmit(emojis[currentEmojiIndex], status);
     };
 
+    const handleEdit = () => {
+        setShowText(false); 
+    }
+
 
     const handleCancel = () => {
         console.log('Cancel clicked');
@@ -58,7 +62,7 @@ const StatusComponent = () => {
                 )}
                 
                 <div className="emoji-window">{emojis[currentEmojiIndex]}</div>
-                {showText && <p className="entered-text">{status}</p>}
+                {showText && <div className="entered-text">{status}</div>}
                 {!showText && (
                 <div className="arrow-buttons">
                     
@@ -69,7 +73,7 @@ const StatusComponent = () => {
             )}
             </div>
             
-            {!showText && (
+            {!showText ? (
                 <div className="text-input">
                     <input
                         className="status-input"
@@ -82,12 +86,16 @@ const StatusComponent = () => {
                         <button className="check-button positive-border" onClick={handleCheck}>
                             ✅
                         </button>
-                        <button className="cancel-button negative-border" onClick={handleCancel}>
-                            ❌
-                        </button>
+                        
                     </div>
                 </div>
-            )}
+            ) : (
+            
+                <a id="edit-state" onClick={() => handleEdit()}>
+                    Edit
+                </a>
+            )
+            }
         </div>
     );
 };

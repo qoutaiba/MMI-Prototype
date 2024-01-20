@@ -144,3 +144,8 @@ a, button{
     flex-direction: column;
 }
 
+
+
+.hidden {
+    visibility: hidden;
+}
