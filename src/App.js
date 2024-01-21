@@ -1,41 +1,40 @@
+import React, { useState, useEffect, useRef } from "react";
+import axios from 'axios';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import MenuBar from "./MenuBar";
 import MusicMode from "./MusikMode";
 import StyleMode from "./StyleMode";
 import PrivateMode from "./PrivateMode";
-import React, { useRef, useState } from "react";
 import StateMode from "./StateMode";
 import MysteryMode from './MysteryMode';
 import sound from "./Musik/land.wav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEye, faEyeSlash, faHeadphones} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faHeadphones } from "@fortawesome/free-solid-svg-icons";
 import DisplayPage from './DisplayPage';
-import axios from 'axios';
-import { useEffect } from 'react';
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import "./central_styles.css";
 
 function App() {
     const [privateMode, setPrivateMode] = useState(false);
     const [color, setColor] = useState('transparent'); // Default color: transparent
+    const [menuClicked, setMenuClicked] = useState(false);
     const audioRef = useRef(null);
+    const currentPage = useLocation().pathname.slice(1);
+
+    console.log(currentPage)
 
     useEffect(() => {
-        const page = window.location.pathname.slice(1); // remove leading slash
-        if (page !== 'Display') {
-            axios.post('/api/currentPage', { page: page })
+        if (currentPage !== 'Display') {
+            axios.post('/api/currentPage', { page: currentPage })
                 .catch((error) => {
                     console.error(error);
                 });
         }
-      }, [window.location.pathname]);
-     
+    }, [currentPage]);
 
     const playAudio = () => {
         audioRef.current.play();
     };
-    
+
     const togglePrivateMode = () => {
         setPrivateMode(!privateMode);
     };
@@ -61,20 +60,18 @@ function App() {
                 break;
         }
         setColor(newColor);
-        axios.post('/api/color', { color: newColor }) // saves the current choosen ring color to the DB
+        axios.post('/api/color', { color: newColor }) // saves the current chosen ring color to the DB
             .catch((error) => {
                 console.error(error);
             });
     };
 
     return (
-        <Router>
-
         <div className="App">
             <button className="headphone-button">
                 <FontAwesomeIcon icon={faHeadphones} />
             </button>
-            <MenuBar />
+            <MenuBar setMenuClicked={setMenuClicked} currentPage={currentPage} />
             <div className="flip-switch">
                 <span className="icon">
                     <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye} />
@@ -84,7 +81,6 @@ function App() {
                         <div className="knob" />
                     </div>
                 </div>
-
             </div>
             <span className="toggle-label"></span>
             <div className="color-slider">
@@ -100,19 +96,16 @@ function App() {
             </div>
             <audio ref={audioRef} src={sound} />
             <button onClick={playAudio}>Click me </button>
-                <Routes>
-                    <Route path="/" element={<MysteryMode/>}></Route>
-                    <Route path="/Music" element={<MusicMode/>}></Route>
-                    <Route path="/State" element={<StateMode/>}></Route>
-                    <Route path="/Style" element={<StyleMode/>}></Route>
-                    <Route path="/Mystery" element={<MysteryMode/>}></Route>
-                    <Route path="/Privacy" element={<PrivateMode/>}></Route>
-                    <Route path="/Display" element={<DisplayPage/>}></Route>
-                </Routes>
-
+            <Routes>
+                <Route path="/" element={<MysteryMode />}></Route>
+                <Route path="/Music" element={<MusicMode />}></Route>
+                <Route path="/State" element={<StateMode />}></Route>
+                <Route path="/Style" element={<StyleMode />}></Route>
+                <Route path="/Mystery" element={<MysteryMode />}></Route>
+                <Route path="/Privacy" element={<PrivateMode />}></Route>
+                <Route path="/Display" element={<DisplayPage />}></Route>
+            </Routes>
         </div>
-        </Router>
-
     );
 }
 
