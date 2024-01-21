@@ -55,7 +55,8 @@ const MenuBar = ({ setMenuClicked, currentPage }) => {
                         </Link>
                     </li>
                     <li className={currentPath === '/Privacy' ? 'selected' : ''}>
-                        <Link to="/Privacy" onClick={handleMenuItemClick}>
+                        {/*link commented out since privacy mode is not implemented*/}
+                        <Link /*to="/Privacy" onClick={handleMenuItemClick}*/>
                             <div className="nav-item">
                                 {<FontAwesomeIcon icon={faMinusCircle} color="white" size="2x" />}
                             </div>
