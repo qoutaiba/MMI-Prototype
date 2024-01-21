@@ -4,8 +4,8 @@ import axios from 'axios';
 
 const DropdownMenu = () => {
    const options = [
-       { value: '', label: 'Mode', content: '' },
-       { value: 'Show Artist and Song', label: 'Show Song and Artist', content: ['Retro Music', 'Various Artists'] },
+       { value: '', label: 'Show', content: '' },
+       { value: 'Show artist and song', label: 'Show song and artist', content: ['Retro Music', 'Various Artists'] },
        { value: 'Show music genres', label: 'Show music genres', content: ['8-Bit', 'Retro', 'Video Game'] },
        { value: 'Show lyrics', label: 'Show lyrics', content: 'Lyrics...' },
    ];
@@ -25,7 +25,7 @@ const DropdownMenu = () => {
 
    return (
        <div className="center-container">
-           <label htmlFor="dropdown">Select what to display!:</label>
+           <label htmlFor="dropdown">Select what to display!</label>
            <select id="dropdown" value={selectedOption.value} onChange={handleOptionChange}>
                {options.map((option) => (
                   <option key={option.value} value={option.value}>
