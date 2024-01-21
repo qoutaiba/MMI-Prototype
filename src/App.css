@@ -196,6 +196,6 @@ input[type='range']::-webkit-slider-thumb {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 30px;
     color: #000;
 }

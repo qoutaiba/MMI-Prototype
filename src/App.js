@@ -78,7 +78,7 @@ function App() {
                         <span className="icon">
                             <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye} />
                         </span>
-                        <div className={`switch ${privateMode ? 'active' : ''}`} onClick={togglePrivateMode}>
+                        <div className={`switch ${privateMode ? 'passive' : 'active'}`} onClick={togglePrivateMode}>
                             <div className="track">
                                 <div className="knob" />
                             </div>
