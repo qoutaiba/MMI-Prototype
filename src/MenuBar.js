@@ -1,35 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette, faMusic, faQuestion, faComment, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { Link, useLocation } from "react-router-dom";
+import './App.css';
 
-import './App.css'; // Import your CSS file
-
-import { Link, useLocation } from "react-router-dom"
-
-
-const App = () => {
-    
-
+const MenuBar = ({ setMenuClicked, currentPage }) => {
     let currentPath = useLocation().pathname;
-    
+
+    console.log(currentPath)
+
+    const handleMenuItemClick = () => {
+        setMenuClicked(currentPath);
+    };
 
     return (
-        
         <>
-        
             <nav className="navbar">
                 <ul>
                     <li className={currentPath === '/Music' ? 'selected' : ''}>
-                        <Link to="/Music">
+                        <Link to="/Music" onClick={handleMenuItemClick}>
                             <div className="nav-item">
-                                <FontAwesomeIcon icon={faMusic} size="2x" /> 
+                                <FontAwesomeIcon icon={faMusic} size="2x" />
                             </div>
                             <span>Music</span>
                         </Link>
                     </li>
 
                     <li className={currentPath === '/State' ? 'selected' : ''}>
-                        <Link to="/State">
+                        <Link to="/State" onClick={handleMenuItemClick}>
                             <div className="nav-item">
                                 <FontAwesomeIcon icon={faComment} size="2x" />
                             </div>
@@ -37,7 +35,7 @@ const App = () => {
                         </Link>
                     </li>
                     <li className={currentPath === '/Style' ? 'selected' : ''}>
-                        <Link to="/Style">
+                        <Link to="/Style" onClick={handleMenuItemClick}>
                             <div className="nav-item">
                                 <FontAwesomeIcon icon={faPalette} size="2x" />
                             </div>
@@ -46,19 +44,18 @@ const App = () => {
                     </li>
 
                     <li className={currentPath === '/Mystery' ? 'selected' : ''}>
-                        <Link to="/Mystery">
+                        <Link to="/Mystery" onClick={handleMenuItemClick}>
                             <div className="nav-item">
                                 <div className="icon-container">
                                     <FontAwesomeIcon icon={faMusic} size="2x" />
-
-                                    <FontAwesomeIcon className="question-mark" icon={faQuestion} size="2x"/>
+                                    <FontAwesomeIcon className="question-mark" icon={faQuestion} size="2x" />
                                 </div>
                             </div>
                             <span>Mystery</span>
                         </Link>
                     </li>
                     <li className={currentPath === '/Privacy' ? 'selected' : ''}>
-                        <Link to="/Privacy">
+                        <Link to="/Privacy" onClick={handleMenuItemClick}>
                             <div className="nav-item">
                                 {<FontAwesomeIcon icon={faMinusCircle} color="white" size="2x" />}
                             </div>
@@ -71,5 +68,4 @@ const App = () => {
     )
 };
 
-export default App;
-
+export default MenuBar;
