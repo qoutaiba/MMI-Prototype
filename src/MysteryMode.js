@@ -1,9 +1,10 @@
 import React from 'react';
 import './MysteryMode.css'; // Import CSS file for styling
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 
-const channel_one = {name: "moodysound_02"}
-const channel_two = {name: "strangethingshappen"}
+const channel_one = { name: "moodysound_02" }
+const channel_two = { name: "strangethingshappen" }
 
 const channels_ = [channel_one, channel_two]
 
@@ -12,7 +13,7 @@ const MysteryMode = () => {
 
     const main_state = "main";
     const listening_state = "listening";
-    const hosting_state = "hosting"; 
+    const hosting_state = "hosting";
     const search_state = "search";
 
 
@@ -23,12 +24,12 @@ const MysteryMode = () => {
 
     const [isHelpOpen, setHelpOpen] = useState(false);
     const [isNamingOpen, setNamingOpen] = useState(false);
-    
-    const [channelName, setChannelName] = useState("Random Generated Name"); 
+
+    const [channelName, setChannelName] = useState("Random Generated Name");
 
     const handleHelp = () => {
         setHelpOpen(!isHelpOpen)
-    }    
+    }
 
     const handleBack = () => {
         if (channelState === listening_state) {
@@ -40,7 +41,7 @@ const MysteryMode = () => {
 
     const handleCreateChannel = () => {
         setChannelState(hosting_state)
-        setNamingOpen(true); 
+        setNamingOpen(true);
     }
 
     const handleSearchChannel = () => {
@@ -55,10 +56,10 @@ const MysteryMode = () => {
     const handleShare = () => {
         alert("Sharing Link copied to clipboard.")
     }
-    const Channel = ({name}) => {
-        return(
+    const Channel = ({ name }) => {
+        return (
             <>
-            {/** 
+                {/** 
                 <a onClick={() => handleJoinChannel(name)} className="channel-container">
                     <div>{name}</div>
                     <a onClick={() => handleJoinChannel(name)}>➡️</a>
@@ -73,9 +74,9 @@ const MysteryMode = () => {
         )
     }
 
-    const HelpPopup  = () => {
-        
-        return(
+    const HelpPopup = () => {
+
+        return (
             <>
                 <div className="popup-container help-container">
                     <div className="title-box flex-center">
@@ -86,17 +87,17 @@ const MysteryMode = () => {
                     <div className="popup-first flex-center">
                         <p id="">
                             If you want to host your music to nearby devices you can click "Create a channel".
-                            <br/>
+                            <br />
                             If you want to join a channel hosted by others, "Join a channel".
                         </p>
                     </div>
-                    
+
                     <div id="help-button" className="flex-center popup-third">
                         <button className="positive-border" onClick={() => setHelpOpen(false)}>
                             Ok
                         </button>
                     </div>
-                    
+
                 </div>
             </>
         )
@@ -104,10 +105,22 @@ const MysteryMode = () => {
 
     const NamingPopup = () => {
 
-        const [channelInputValue, setChannelInputValue] = useState(""); 
+        const [channelInputValue, setChannelInputValue] = useState("");
+
+        
 
         const handleSubmit = () => {
-            if(channelInputValue != "") setChannelName(channelInputValue);
+            if (channelInputValue != "") {
+                setChannelName(channelInputValue);
+                console.log(channelInputValue);
+                axios.post('/api/mysteryMode', { name: channelInputValue })
+                    .then(response => {
+                        console.log(response.data);
+                    })
+                    .catch(error => {
+                        console.error('There was an error!', error);
+                    });
+            }
             setNamingOpen(false);
         }
 
@@ -117,10 +130,10 @@ const MysteryMode = () => {
         }
 
         const handleInputChange = (e) => {
-            setChannelInputValue(e.target.value); 
+            setChannelInputValue(e.target.value);
         }
 
-        return(
+        return (
             <>
                 <div className="popup-container naming-container">
                     <div className="title-box flex-center">
@@ -129,19 +142,19 @@ const MysteryMode = () => {
                                 Name your channel
                             </h2>
                             <p>
-                                What should be the name of the channel? 
+                                What should be the name of the channel?
                                 If you type in nothing, the previous name will be taken.
                             </p>
                         </div>
-                        
+
                     </div>
                     <div className="flex-center popup-second">
                         <input
-                        id="naming-input" 
-                        placeholders="Name for channel" 
-                        type="text"
-                        value={channelInputValue}
-                        onChange={handleInputChange}/>               
+                            id="naming-input"
+                            placeholders="Name for channel"
+                            type="text"
+                            value={channelInputValue}
+                            onChange={handleInputChange} />
                     </div>
                     <div id="naming-action-buttons" className="flex-center popup-third">
                         <button className="positive-border" onClick={() => handleSubmit()}>
@@ -158,20 +171,20 @@ const MysteryMode = () => {
     }
 
     return (
-        <>  
+        <>
 
-            {isHelpOpen && <HelpPopup/>}
-            {isNamingOpen && <NamingPopup/>}
+            {isHelpOpen && <HelpPopup />}
+            {isNamingOpen && <NamingPopup />}
 
             <div className="mystery-container">
                 <div className="">
                     <div className="mystery-page">
                         <div className="hero">
                             <div className="mystery-header">
-                                
+
                                 <a className={channelState === main_state ? "hidden" : ""} onClick={() => handleBack()}>⬅️ Back</a>
-                                
-                                
+
+
                                 <a onClick={() => handleHelp()}>Help❓</a>
                             </div>
                             <div className="mystery-hero">
@@ -180,62 +193,59 @@ const MysteryMode = () => {
                         </div>
 
                         <div className="content">
-                            
+
                             {channelState === search_state && (
-                                    <>
-                                        <div className='listening-in-container'>
-                                            <h3>Channels in your radius:</h3>
-                                        </div>
-                                        <div className="lobby-list">
-                                            {
-                                                channels.map(
-                                                    channel => (
-                                                        <Channel name={channel.name}/>
-                                                    )
-            
+                                <>
+                                    <div className='listening-in-container'>
+                                        <h3>Channels in your radius:</h3>
+                                    </div>
+                                    <div className="lobby-list">
+                                        {
+                                            channels.map(
+                                                channel => (
+                                                    <Channel name={channel.name} />
                                                 )
-                                            }
-                                        </div>
-                                    </>
-                                )
+
+                                            )
+                                        }
+                                    </div>
+                                </>
+                            )
                             }
                             {channelState === listening_state && (
-                                    <>
-                                        <h3>You are currently listening to:</h3>
-                                        <h3>{currentChannel}</h3>
-                                        
-                                    </>
-                                )
+                                <>
+                                    <h3>You are currently listening to:</h3>
+                                    <h3>{currentChannel}</h3>
+
+                                </>
+                            )
                             }
                             {channelState === hosting_state && (
-                                    <>
-                                        <h3>{channelName}</h3>
-                                        <div className="listening-in-container">
-                                            <h3>People listening in: </h3>
-                                            <h3 id="listenerNumber">{listeners}</h3>
-                                        </div>
-                                        <a id="sharing" onClick={() => handleShare()}>Teilen ↪️</a>
+                                <>
+                                    <h3>{channelName}</h3>
+                                    <div className="listening-in-container">
+                                        <h3>People listening in: </h3>
+                                        <h3 id="listenerNumber">{listeners}</h3>
+                                    </div>
+                                    <a id="sharing" onClick={() => handleShare()}>Teilen ↪️</a>
 
-                       
-                                    </>
-                                )
+
+                                </>
+                            )
                             }
                             {channelState === main_state && (
-                                    <>
-                                        <div className="main-container">
-                                            <button onClick={() => handleSearchChannel()}>Join a channel</button>
-                                            <button onClick={() => handleCreateChannel()}>Create a channel</button>
-                                        </div>
+                                <>
+                                    <div className="main-container">
+                                        <button onClick={() => handleSearchChannel()}>Join a channel</button>
+                                        <button onClick={() => handleCreateChannel()}>Create a channel</button>
+                                    </div>
 
-                       
-                                    </>
-                                )
+
+                                </>
+                            )
                             }
-                                
-                            
-                                      
                         </div>
-                       
+
                     </div>
                 </div>
             </div>

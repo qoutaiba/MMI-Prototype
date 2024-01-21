@@ -42,3 +42,7 @@
     font-size: 1.2em;
  }
  
+ .small-image {
+   max-width: 200px;
+   max-height: 200px;
+}

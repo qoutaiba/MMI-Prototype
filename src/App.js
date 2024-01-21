@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import MenuBar from "./MenuBar";
 import MusicMode from "./MusikMode";
 import StyleMode from "./StyleMode";
 import PrivateMode from "./PrivateMode";
 import StateMode from "./StateMode";
 import MysteryMode from './MysteryMode';
+import DisplayPage from './DisplayPage';
+import HomePage from './HomePage';
 import sound from "./Musik/land.wav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faHeadphones } from "@fortawesome/free-solid-svg-icons";
-import DisplayPage from './DisplayPage';
 import "./central_styles.css";
 
 function App() {
@@ -18,18 +19,24 @@ function App() {
     const [color, setColor] = useState('transparent'); // Default color: transparent
     const [menuClicked, setMenuClicked] = useState(false);
     const audioRef = useRef(null);
+    const navigate = useNavigate();
     const currentPage = useLocation().pathname.slice(1);
+    const goToHome = () => {
+        navigate('/Home');
+    };
+
 
     console.log(currentPage)
 
     useEffect(() => {
-        if (currentPage !== 'Display') {
+        if (currentPage !== 'Display' && currentPage !== 'Home') {
             axios.post('/api/currentPage', { page: currentPage })
                 .catch((error) => {
                     console.error(error);
                 });
         }
     }, [currentPage]);
+
 
     const playAudio = () => {
         audioRef.current.play();
@@ -70,7 +77,7 @@ function App() {
         <div className="App">
             {currentPage !== 'Display' && (
                 <>
-                    <button className="headphone-button">
+                    <button className="headphone-button" onClick={goToHome}>
                         <FontAwesomeIcon icon={faHeadphones} />
                     </button>
                     <MenuBar setMenuClicked={setMenuClicked} currentPage={currentPage} />
@@ -108,10 +115,11 @@ function App() {
                 <Route path="/Mystery" element={<MysteryMode />}></Route>
                 <Route path="/Privacy" element={<PrivateMode />}></Route>
                 <Route path="/Display" element={<DisplayPage />}></Route>
+                <Route path="/Home" element={<HomePage />}></Route>
             </Routes>
         </div>
     );
-    
+
 }
 
 export default App;

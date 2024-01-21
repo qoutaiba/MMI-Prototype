@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './DisplayPage.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 const DisplayPage = () => {
     const [statuses, setStatuses] = useState([]);
@@ -10,7 +8,6 @@ const DisplayPage = () => {
     const [musicMode, setMusicMode] = useState(null);
     const [currentPage, setCurrentPage] = useState(null);
     const [mysteryModeName, setMysteryModeName] = useState("");
-
 
     useEffect(() => {
         axios.get('/api/color')
@@ -52,10 +49,6 @@ const DisplayPage = () => {
             .catch((error) => {
                 console.error(error);
             });
-        const interval = setInterval(() => {
-            window.location.reload();
-        }, 5000); // 5 seconds
-        return () => clearInterval(interval);
     }, []);
 
     return (
@@ -84,13 +77,8 @@ const DisplayPage = () => {
                     </div>
                 )}
                 {currentPage === 'Mystery' && (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1em' }}>
-                        <p>Join my channel: {mysteryModeName}</p>
-                        <div style={{ display: 'flex', gap: '1em' }}>
-                            <FontAwesomeIcon icon={faMusic} size="2x" />
-                            <FontAwesomeIcon icon={faQuestion} size="2x" />
-                        </div>
-                        <p style={{ marginLeft: '30px' }}>Der Kommunikative Kopfhörer</p>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1em', flexDirection: 'column' }}>
+                        <p>{mysteryModeName}</p>
                     </div>
                 )}
                 {/* similar blocks for the other pages */}

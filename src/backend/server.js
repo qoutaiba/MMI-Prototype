@@ -21,6 +21,7 @@ const currentPageRoute = require('./routes/currentPageRoute');
 const musicModeRoutes = require('./routes/musicModeRoutes');
 const ringColorRouter = require('./routes/ringColorRoutes');
 const stateRoutes = require('./routes/stateRoutes');
+const mysteryModeRoutes = require('./routes/mysteryModeRoutes');
 
 app.get('/', (req, res) => { // serves the react app via the proxy which ignores CORS
 })
@@ -28,5 +29,6 @@ app.use('/api/state', stateRoutes);
 app.use('/api/color', ringColorRouter);
 app.use('/api/musicMode', musicModeRoutes);
 app.use('/api/currentPage', currentPageRoute);
+app.use('/api/mysteryMode', mysteryModeRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
