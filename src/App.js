@@ -68,34 +68,38 @@ function App() {
 
     return (
         <div className="App">
-            <button className="headphone-button">
-                <FontAwesomeIcon icon={faHeadphones} />
-            </button>
-            <MenuBar setMenuClicked={setMenuClicked} currentPage={currentPage} />
-            <div className="flip-switch">
-                <span className="icon">
-                    <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye} />
-                </span>
-                <div className={`switch ${privateMode ? 'active' : ''}`} onClick={togglePrivateMode}>
-                    <div className="track">
-                        <div className="knob" />
+            {currentPage !== 'Display' && (
+                <>
+                    <button className="headphone-button">
+                        <FontAwesomeIcon icon={faHeadphones} />
+                    </button>
+                    <MenuBar setMenuClicked={setMenuClicked} currentPage={currentPage} />
+                    <div className="flip-switch">
+                        <span className="icon">
+                            <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye} />
+                        </span>
+                        <div className={`switch ${privateMode ? 'active' : ''}`} onClick={togglePrivateMode}>
+                            <div className="track">
+                                <div className="knob" />
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <span className="toggle-label"></span>
-            <div className="color-slider">
-                <div className="color-indicator" style={{ borderColor: color }}></div>
-                <input
-                    type="range"
-                    min="0"
-                    max="3"
-                    step="1"
-                    value={color === 'transparent' ? '0' : color === '#00ff00' ? '1' : color === '#0000ff' ? '2' : '3'}
-                    onChange={handleColorChange}
-                />
-            </div>
-            <audio ref={audioRef} src={sound} />
-            <button onClick={playAudio}>Click me </button>
+                    <span className="toggle-label"></span>
+                    <div className="color-slider">
+                        <div className="color-indicator" style={{ borderColor: color }}></div>
+                        <input
+                            type="range"
+                            min="0"
+                            max="3"
+                            step="1"
+                            value={color === 'transparent' ? '0' : color === '#00ff00' ? '1' : color === '#0000ff' ? '2' : '3'}
+                            onChange={handleColorChange}
+                        />
+                    </div>
+                    <audio ref={audioRef} src={sound} />
+                    <button onClick={playAudio}>Click me </button>
+                </>
+            )}
             <Routes>
                 <Route path="/" element={<MysteryMode />}></Route>
                 <Route path="/Music" element={<MusicMode />}></Route>
@@ -107,6 +111,7 @@ function App() {
             </Routes>
         </div>
     );
+    
 }
 
 export default App;
