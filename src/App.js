@@ -85,7 +85,7 @@ function App() {
                         <span className="icon">
                             <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye} />
                         </span>
-                        <div className={`switch ${privateMode ? 'active' : ''}`} onClick={togglePrivateMode}>
+                        <div className={`switch ${privateMode ? 'passive' : 'active'}`} onClick={() => { togglePrivateMode(); playAudio(); }}>
                             <div className="track">
                                 <div className="knob" />
                             </div>
@@ -104,7 +104,6 @@ function App() {
                         />
                     </div>
                     <audio ref={audioRef} src={sound} />
-                    <button onClick={playAudio}>Click me </button>
                 </>
             )}
             <Routes>

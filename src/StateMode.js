@@ -51,6 +51,7 @@ const StatusComponent = () => {
 
     return (
         <div className="status-container">
+            <label>Select what to display!</label>
             <div className={`emoji-text-container ${showText ? "emoji-text-column" : "emoji-text-row"}`}>
                 {!showText && (
                     <div className="arrow-buttons">
