@@ -5,7 +5,7 @@ import './StyleMode.css';
 const StyleMode = () => {
     const [selectedOption, setSelectedOption] = useState('');
 
-    const options = ["Sound Waves", "Option to be dev.", "In Dev..."]
+    const options = ["Sound Waves", "Pulsing Luminescence", "Sonic Kaleidoscope"]
 
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value);
