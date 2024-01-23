@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {useState, useEffect, useRef} from "react";
 import axios from 'axios';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
 import MenuBar from "./MenuBar";
 import MusicMode from "./MusikMode";
 import StyleMode from "./StyleMode";
@@ -10,8 +10,8 @@ import MysteryMode from './MysteryMode';
 import DisplayPage from './DisplayPage';
 import HomePage from './HomePage';
 import sound from "./Musik/land.wav";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash, faHeadphones } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye, faEyeSlash, faHeadphones} from "@fortawesome/free-solid-svg-icons";
 import "./central_styles.css";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
 
     useEffect(() => {
         if (currentPage !== 'Display' && currentPage !== 'Home') {
-            axios.post('/api/currentPage', { page: currentPage })
+            axios.post('/api/currentPage', {page: currentPage})
                 .catch((error) => {
                     console.error(error);
                 });
@@ -44,7 +44,12 @@ function App() {
 
     const togglePrivateMode = () => {
         setPrivateMode(!privateMode);
+        axios.post('/api/privacyMode', {privateMode: !privateMode})
+            .catch((error) => {
+                console.error(error);
+            });
     };
+
 
     const handleColorChange = (event) => {
         const value = event.target.value;
@@ -67,7 +72,7 @@ function App() {
                 break;
         }
         setColor(newColor);
-        axios.post('/api/color', { color: newColor }) // saves the current chosen ring color to the DB
+        axios.post('/api/color', {color: newColor}) // saves the current chosen ring color to the DB
             .catch((error) => {
                 console.error(error);
             });
@@ -78,22 +83,25 @@ function App() {
             {currentPage !== 'Display' && (
                 <>
                     <button className="headphone-button" onClick={goToHome}>
-                        <FontAwesomeIcon icon={faHeadphones} />
+                        <FontAwesomeIcon icon={faHeadphones}/>
                     </button>
-                    <MenuBar setMenuClicked={setMenuClicked} currentPage={currentPage} />
+                    <MenuBar setMenuClicked={setMenuClicked} currentPage={currentPage}/>
                     <div className="flip-switch">
                         <span className="icon">
-                            <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye} />
+                            <FontAwesomeIcon icon={privateMode ? faEyeSlash : faEye}/>
                         </span>
-                        <div className={`switch ${privateMode ? 'passive' : 'active'}`} onClick={() => { togglePrivateMode(); playAudio(); }}>
+                        <div className={`switch ${privateMode ? 'passive' : 'active'}`} onClick={() => {
+                            togglePrivateMode();
+                            playAudio();
+                        }}>
                             <div className="track">
-                                <div className="knob" />
+                                <div className="knob"/>
                             </div>
                         </div>
                     </div>
                     <span className="toggle-label"></span>
                     <div className="color-slider">
-                        <div className="color-indicator" style={{ borderColor: color }}></div>
+                        <div className="color-indicator" style={{borderColor: color}}></div>
                         <input
                             type="range"
                             min="0"
@@ -103,18 +111,18 @@ function App() {
                             onChange={handleColorChange}
                         />
                     </div>
-                    <audio ref={audioRef} src={sound} />
+                    <audio ref={audioRef} src={sound}/>
                 </>
             )}
             <Routes>
-                <Route path="/" element={<MysteryMode />}></Route>
-                <Route path="/Music" element={<MusicMode />}></Route>
-                <Route path="/State" element={<StateMode />}></Route>
-                <Route path="/Style" element={<StyleMode />}></Route>
-                <Route path="/Mystery" element={<MysteryMode />}></Route>
-                <Route path="/Privacy" element={<PrivateMode />}></Route>
-                <Route path="/Display" element={<DisplayPage />}></Route>
-                <Route path="/Home" element={<HomePage />}></Route>
+                <Route path="/" element={<MysteryMode/>}></Route>
+                <Route path="/Music" element={<MusicMode/>}></Route>
+                <Route path="/State" element={<StateMode/>}></Route>
+                <Route path="/Style" element={<StyleMode/>}></Route>
+                <Route path="/Mystery" element={<MysteryMode/>}></Route>
+                <Route path="/Privacy" element={<PrivateMode/>}></Route>
+                <Route path="/Display" element={<DisplayPage/>}></Route>
+                <Route path="/Home" element={<HomePage/>}></Route>
             </Routes>
         </div>
     );
